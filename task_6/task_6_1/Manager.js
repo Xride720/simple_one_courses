@@ -1,8 +1,10 @@
 import {Employee} from './Employee';
 
 export class Manager extends Employee {
+    static count = 0;
     constructor(subordinateList, ...args) {
         super(...args);
+        Manager.count++;
         this._type = {
             title: 'Type: ',
             value: 'Manager'

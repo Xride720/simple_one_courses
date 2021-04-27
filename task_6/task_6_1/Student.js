@@ -1,8 +1,10 @@
 import {Person} from './Person';
 
 export class Student extends Person {
+    static count = 0;
     constructor (dateOfBirth = '', course = '1', ...args) {
         super(...args);
+        Student.count++;
         this._type = {
             title: 'Type: ',
             value: 'Student'
@@ -63,3 +65,4 @@ export class Student extends Person {
     }
 
 }
+

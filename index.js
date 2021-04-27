@@ -5,3 +5,4 @@ let task_6 = new Task_6();
 // task_6.changeEmployee();
 // task_6.changeManager();
 task_6.show();
+task_6.count();

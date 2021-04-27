@@ -1,8 +1,10 @@
 import {Person} from './Person';
 
 export class Employee extends Person {
+    static count = 0;
     constructor (salary, salaryList, ...args) {
         super(...args);
+        Employee.count++;
         this._type = {
             title: 'Type: ',
             value: 'Employee'

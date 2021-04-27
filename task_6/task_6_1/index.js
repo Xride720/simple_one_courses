@@ -4,7 +4,8 @@ import {Employee} from './Employee';
 import {Manager} from './Manager';
 let salaryList = ['10 января получил 20 000', '10 февраля получил 110 000 рублей'];
 let subordinateList = [new Employee('100000', salaryList.slice(0), 'Sergey', 'Saigak'),
-    new Employee('200000', salaryList.slice(0), 'Vladimir', 'Trofimov')];
+    new Employee('200000', salaryList.slice(0), 'Vladimir', 'Trofimov'),
+    new Employee('300000', [], 'Vlad', 'Komov')];
 
 
 export default class Task {
@@ -20,6 +21,9 @@ export default class Task {
     }
     show() {
         this.arr.forEach(item => item.show());
+    }
+    count() {
+        this.arr.forEach(item => console.log(item.count));
     }
 
     changePerson() {

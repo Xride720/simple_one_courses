@@ -1,5 +1,7 @@
 export class Person {
+    static count = 0;
     constructor(name, surname) {
+        Person.count++;
         this._type = {
             title: 'Type: ',
             value: 'Person'
@@ -12,8 +14,9 @@ export class Person {
             title: 'Surname: ',
             value: surname
         };
+        
     }
-
+    
     get fullName() {
         return this._name.value + ' ' + this._surname.value;
     }
@@ -36,6 +39,7 @@ export class Person {
         }
         console.log("\n");
     }
+    
 
     formatDate(date) {
         let day = date.getDate(),
@@ -45,4 +49,10 @@ export class Person {
                 (month < 10 ? '0' + month : month) + '.' +
                 year;
     }
+
+    get count() {
+        return this._type.value + ' : ' + this.constructor.count;
+    }
 }
+
+// Person.count = 0;
