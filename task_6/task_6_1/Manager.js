@@ -1,59 +1,89 @@
-import {Employee} from './Employee';
-
-export class Manager extends Employee {
-    static count = 0;
-    constructor(subordinateList, ...args) {
-        super(...args);
-        Manager.count++;
-        this._type = {
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Employee_1 = require("./Employee");
+;
+var Manager = /** @class */ (function (_super) {
+    __extends(Manager, _super);
+    function Manager(subordinateList, salary, salaryList, name, surname) {
+        var _this = _super.call(this, salary, salaryList, name, surname) || this;
+        Manager._count++;
+        _this.info._type = {
             title: 'Type: ',
             value: 'Manager'
         };
-        this._subordinateList = {
+        _this.info._subordinateList = {
             title: 'Subordinate list: ',
             value: subordinateList
-        }
+        };
+        return _this;
     }
-
-    get subordinateList() {
-        let list = [];
-        for (let employee of this._subordinateList.value) {
-            list.push(employee.fullName);
-        }
-        return list.join(', ');
-    }
-
-    addSubordinate(obj) {
-        this._subordinateList.value.push(obj);
-    }
-
-    deleteSubordinate(fullName) {
-        this._subordinateList.value = this._subordinateList.value.filter(item => item.fullName != fullName);
-    }
-
-    paySubordinateSalary(type = "default", data = {}) {
+    Object.defineProperty(Manager.prototype, "subordinateList", {
+        get: function () {
+            var list = [];
+            for (var _i = 0, _a = this.info._subordinateList.value; _i < _a.length; _i++) {
+                var employee = _a[_i];
+                list.push(employee.fullName);
+            }
+            return list.join(', ');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Manager.prototype.addSubordinate = function (obj) {
+        this.info._subordinateList.value.push(obj);
+    };
+    Manager.prototype.deleteSubordinate = function (fullName) {
+        this.info._subordinateList.value = this.info._subordinateList.value.filter(function (item) { return item.fullName != fullName; });
+    };
+    Manager.prototype.paySubordinateSalary = function (type, data) {
+        if (type === void 0) { type = "default"; }
+        if (data === void 0) { data = {}; }
         if (type == "default") {
-            this._subordinateList.value.forEach(item => item.paySalary());
-        } else if (type == 'custom') {
-            this._subordinateList.value.forEach(item => item.paySalary(data[item.fullName]));
+            this.info._subordinateList.value.forEach(function (item) { return item.paySalary(); });
         }
-    }
-
-    showSubordinate() {
-        this._subordinateList.value.forEach(item => item.show());
-    }
-
-    show() {
-        for (let item in this) {
+        else if (type == 'custom') {
+            this.info._subordinateList.value.forEach(function (item) { return item.paySalary(data[item.fullName]); });
+        }
+    };
+    Manager.prototype.showSubordinate = function () {
+        this.info._subordinateList.value.forEach(function (item) { return item.show(); });
+    };
+    Manager.prototype.show = function () {
+        for (var item in this.info) {
             if (item == '_subordinateList') {
-                let list = [];
-                for (let employee of this[item].value) {
+                var list = [];
+                for (var _i = 0, _a = this.info[item].value; _i < _a.length; _i++) {
+                    var employee = _a[_i];
                     list.push(employee.fullName);
                 }
-                console.log(this[item].title + list.join(', '));
-            } else console.log(this[item].title + this[item].value);
+                console.log(this.info[item].title + list.join(', '));
+            }
+            else
+                console.log(this.info[item].title + this.info[item].value);
         }
         console.log("\n");
-    }
-}
-
+    };
+    Object.defineProperty(Manager.prototype, "count", {
+        get: function () {
+            return this.info._type.value + ' : ' + Manager._count;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Manager._count = 0;
+    return Manager;
+}(Employee_1.Employee));
+exports.Manager = Manager;
