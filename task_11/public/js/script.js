@@ -57,11 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function deleteUser(e) {
         return __awaiter(this, void 0, void 0, function* () {
             let target = e.target, input = target.closest('.delete__form').querySelector('.text-input'), deleteId = +input.value;
-            if (deleteId) {
-                if (isNaN(deleteId)) {
-                    inputSignal(input, 'Неверный ID', 'error');
-                    return;
-                }
+            if (!isNaN(deleteId) && input.value != '') {
                 let res = yield request('/delete_user', 'DELETE', { id: deleteId });
                 console.log(res);
                 if (res.success) {
@@ -72,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     inputSignal(input, res.error, 'error');
             }
             else
-                inputSignal(input, 'ID не может быть пустым', 'error');
+                inputSignal(input, 'Неверный ID', 'error');
         });
     }
     function deleteUserEl(e) {

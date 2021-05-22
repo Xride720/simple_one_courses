@@ -75,11 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let target = e.target as Element,
             input : HTMLInputElement = target.closest('.delete__form').querySelector('.text-input'),
             deleteId : number = +input.value;
-        if (deleteId) {
-            if (isNaN(deleteId)) {
-                inputSignal(input, 'Неверный ID', 'error');
-                return;
-            }
+        if (!isNaN(deleteId) && input.value != '') {
+            
             let res : CustomResponse = await request('/delete_user', 'DELETE', {id: deleteId});
             console.log(res);
 
@@ -89,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             else inputSignal(input, res.error, 'error');
 
-        } else inputSignal(input, 'ID не может быть пустым', 'error');
+        } else inputSignal(input, 'Неверный ID', 'error');
 
     }
 
