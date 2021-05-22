@@ -1,0 +1,70 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.create__form,
+.change__form,
+.delete__form,
+.get-all__form {
+  width: 80%;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.397);
+  margin-bottom: 2rem;
+}
+
+.btn {
+  width: 100%;
+  line-height: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.747);
+  cursor: pointer;
+  text-align: center;
+}
+
+.text-input {
+  border: 1px solid rgba(0, 0, 0, 0.397);
+  line-height: 2rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  width: 50%;
+  transition: all .3s ease ;
+  padding: 3px 7px;
+}
+
+.error {
+  border: 1px solid rgba(255, 0, 0, 0.822);
+}
+
+.success {
+  border: 1px solid rgba(68, 241, 0, 0.822);
+}
+
+.user__list-el {
+  list-style: none;
+  margin-bottom: .5rem;
+  border: 1px solid #bdbcb2;
+  width: 40%;
+  padding: 4px;
+  position: relative;
+}
+
+.delete-user-el__btn {
+  position: absolute;
+  top: .3rem;
+  right: .3rem;
+  cursor: pointer;
+  opacity: .5;
+  transform: scale(1.3);
+}

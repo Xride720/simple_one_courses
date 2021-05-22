@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div.wrapper
+    div.create__form
+      input(class='create__from-input text-input',
+            type='text',
+            placeholder="Введите имя пользователя")
+      div(class='add-user__btn btn')= 'Добавить пользователя'
+
+    div.change__form
+      input(class='change__input-id text-input',
+            type='text',
+            placeholder="Введите ID пользователя")
+      input(class='change__input-name text-input',
+            type='text',
+            placeholder="Введите новое имя пользователя")
+      div(class='change-user__btn btn')= 'Редактировать пользователя'
+
+    div.delete__form
+      input(class='delete__input-id text-input',
+            type='text',
+            placeholder="Введите ID пользователя")
+      div(class='delete-user__btn btn')= 'Удалить пользователя'
+
+    div.get-all__form
+      div(class='get-all__btn btn')= 'Вывести всех пользователей'
+      ul.user__list
+  script(src='/js/script.js')
